@@ -1,0 +1,193 @@
+/* =============== HERO EXTRA STYLES =============== */
+
+.gradientRun {
+  background-image: linear-gradient(
+    90deg,
+    var(--rishoni-light),
+    var(--rishoni-primary),
+    var(--rishoni-dark),
+    var(--rishoni-light)
+  );
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: heroGradientRun 6s linear infinite;
+}
+
+@keyframes heroGradientRun {
+  0% {
+    background-position: 0% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+.goldGlowFrame {
+  position: absolute;
+  inset: -2px;
+  border-radius: 1.75rem;
+  background: linear-gradient(
+    135deg,
+    var(--rishoni-light),
+    var(--rishoni-primary),
+    var(--rishoni-deep)
+  );
+  filter: blur(12px);
+  opacity: 0.8;
+  z-index: -1;
+}
+
+.glassCard {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background:
+    radial-gradient(
+      circle at top,
+      rgba(243, 223, 160, 0.16),
+      transparent 55%
+    ),
+    rgba(9, 9, 9, 0.96);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.9);
+}
+
+.serviceChip {
+  padding: 5px 14px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  backdrop-filter: blur(6px);
+}
+
+.carouselDots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.carouselDot {
+  height: 6px;
+  width: 6px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.3);
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.carouselDotActive {
+  width: 20px;
+  background: var(--rishoni-primary);
+}
+
+.carouselBtn {
+  width: 35px;
+  height: 35px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  transition:
+    background 0.25s ease,
+    border-color 0.25s ease,
+    transform 0.15s ease;
+  cursor: pointer;
+}
+
+.carouselBtn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+  transform: translateY(-1px);
+}
+
+
+
+
+
+/* =============== NAVBAR EXTRA STYLES =============== */
+
+/* component.module.css - navbar & menu styles (full-width + responsive) */
+
+/* siteHeader fixed full-width and above hero */
+.siteHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 80;
+  width: 100%;
+  pointer-events: auto;
+}
+
+/* headerInner default (transparent at top) */
+.headerInner {
+  display: block; /* wrapper handled in JSX with max-w and px */
+  background: transparent;
+  transition: background-color 420ms ease, box-shadow 420ms ease, backdrop-filter 420ms ease, transform 420ms ease, opacity 420ms ease;
+}
+
+/* scrolled state — slow fade-in and slight lift */
+.headerInnerScrolled {
+  background: linear-gradient(180deg, rgba(10,10,10,0.96), rgba(18,18,18,0.96));
+  -webkit-backdrop-filter: blur(10px) saturate(140%);
+  backdrop-filter: blur(10px) saturate(140%);
+  box-shadow: 0 14px 50px rgba(0,0,0,0.6), 0 0 32px rgba(217,185,110,0.03);
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Mobile backdrop (when menu open) */
+.mobileBackdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 78;
+  background: rgba(0,0,0,0.6);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+
+/* Mobile menu overlay full screen */
+.mobileMenuOverlay {
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem 1.25rem 2.5rem;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: linear-gradient(180deg, rgba(18,18,18,0.98) 0%, rgba(12,12,12,0.98) 100%);
+  -webkit-backdrop-filter: blur(24px) saturate(180%);
+  backdrop-filter: blur(24px) saturate(180%);
+}
+
+/* menu header spacing & logo size */
+.menuHeader { display:flex; align-items:center; justify-content:space-between; gap:12px; margin-bottom:1rem; }
+.menuHeaderPadding { padding-top: 6px; }
+.mobileMenuLogo { height: 48px; width: auto; object-fit: contain; }
+
+/* close button */
+.closeBtn { display:inline-flex; align-items:center; justify-content:center; width:44px; height:44px; border-radius:8px; border:1px solid rgba(255,255,255,0.08); background: rgba(0,0,0,0.4); color:white; font-size:18px; line-height:1; cursor:pointer; }
+
+/* menu item animation */
+.menuItem { opacity:0; transform: translateX(24px); animation: itemIn 360ms cubic-bezier(.2,.9,.2,1) forwards; }
+
+@keyframes itemIn { to { opacity:1; transform: translateX(0); } }
+
+/* accessibility reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .menuItem, .mobileMenuOverlay, .headerInner, .headerInnerScrolled { transition: none !important; animation: none !important; }
+}
+
+/* small helper to ensure full-width hero + no side gap */
+.mx-auto.w-full.max-w-screen-xl { max-width: 1200px; margin-left: auto; margin-right: auto; }
+

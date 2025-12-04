@@ -1,42 +1,84 @@
+@import "tailwindcss";
+
+/* Brand tokens */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --rishoni-light: #F3DFA0;
+  --rishoni-primary: #D9B96E;
+  --rishoni-dark: #B8924A;
+  --rishoni-deep: #8A6A2F;
+ 
+  --bg-primary: #0D0D0D;
+  --bg-panel: #171717;
+  --text-primary: #FFFFFF;
+  --text-muted: #B8B8B8;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* Base layout */
+html, body, #__next {
+  height: 100%;
+  margin: 0;
+  padding: 0;
 }
 
-html,
+
 body {
-  max-width: 100vw;
-  overflow-x: hidden;
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  background: linear-gradient(180deg, #0b0b0b 0%, #0d0d0d 100%);
+  color: var(--text-primary);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
+/* Premium scrollbar */
+*::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+/* scrollbar: thumb stays gold but track matches page background */
+*::-webkit-scrollbar-track {
+  /* use the same dark gradient as the body background for a seamless look */
+  background: linear-gradient(180deg, #0b0b0b 0%, #0d0d0d 100%);
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+*::-webkit-scrollbar-thumb {
+  background: linear-gradient(
+    180deg,
+    rgba(217, 185, 110, 0.95),
+    rgba(168, 138, 72, 0.95)
+  );
+  border-radius: 999px;
+  border: 3px solid rgba(13, 13, 13, 0.9); /* border uses page dark to avoid halo */
+}
+*::-webkit-scrollbar-thumb:hover {
+  filter: brightness(1.05);
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+/* Helper utility classes (on top of Tailwind) */
+.btn-gold {
+  @apply inline-block px-6 py-2 rounded-md font-semibold tracking-wide text-black;
+  background: linear-gradient(
+    90deg,
+    var(--rishoni-light),
+    var(--rishoni-primary),
+    var(--rishoni-dark)
+  );
+  box-shadow: 0 12px 40px rgba(217, 185, 110, 0.12);
+}
+
+.btn-outline {
+  @apply px-5 py-2 rounded-md border border-gray-700 text-gray-200;
+}
+
+.card-dark {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.01)
+  );
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  padding: 1.25rem;
+  border-radius: 12px;
+}
+
+.text-gold {
+  color: var(--rishoni-primary);
 }
